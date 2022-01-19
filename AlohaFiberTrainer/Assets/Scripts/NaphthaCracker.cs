@@ -45,6 +45,7 @@ public class NaphthaCracker : MonoBehaviour
     private Vector2 malfunctionWaitingTime = new Vector2(5f, 5f);
 
     private float malfunctionTimer;
+    private float malfunctionCompleteTimer;
     private float currentSolutionDelay;
     private Malfunction currentMalfunction = null;
     private int currentSolutionNeeded = 0;
@@ -64,6 +65,7 @@ public class NaphthaCracker : MonoBehaviour
 
     private void Update()
     {
+        // Wait some time between different malfunctions
         if(malfunctionTimer > 0f)
         {
             malfunctionTimer -= Time.deltaTime;
@@ -71,11 +73,7 @@ public class NaphthaCracker : MonoBehaviour
         }
 
         ActivateMalfunction();
-
-        if(currentSolutionDelay > 0f)
-        {
-            currentSolutionDelay -= Time.deltaTime;
-        }
+        UpdateMalfunctionTimers();
     }
 
     #region MalfunctionLogic
@@ -85,6 +83,7 @@ public class NaphthaCracker : MonoBehaviour
         {
             int randomIndex = Random.Range(0, malfunctions.Count);
             currentMalfunction = malfunctions[randomIndex];
+            malfunctionCompleteTimer = currentMalfunction.timeToSolve;
 
             ActivateIndicators();
         }
@@ -136,6 +135,27 @@ public class NaphthaCracker : MonoBehaviour
         preheater.value = (int)LevelState.Middle;
 
         SetMalfunctionTimer();
+    }
+
+    private void UpdateMalfunctionTimers()
+    {
+        // Make sure the user waits the given solution delay before giving the solution
+        if (currentSolutionDelay > 0f)
+        {
+            currentSolutionDelay -= Time.deltaTime;
+        }
+
+        // Make sure the user doesn't take too much time solving the malfunction
+        if (malfunctionCompleteTimer > 0f)
+        {
+            malfunctionCompleteTimer -= Time.deltaTime;
+        }
+        else
+        {
+            // Show result screen when user took too long to solve the malfunction
+            resultScreen.ShowResult(currentMalfunction, malfunctionsSolved);
+            this.enabled = false; // Make sure "Show Result method is called only once"
+        }
     }
     #endregion // MalfunctionLogic
 
