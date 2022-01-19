@@ -45,7 +45,7 @@ public class NaphthaCracker : MonoBehaviour
 
     private float malfunctionTimer;
     private Malfunction currentMalfunction = null;
-    private int currentSolutionNeeded;
+    private int currentSolutionNeeded = 0;
     private Controllers usedController;
 
     private void Start()
@@ -71,7 +71,7 @@ public class NaphthaCracker : MonoBehaviour
         {
             int randomIndex = Random.Range(0, malfunctions.Count);
             currentMalfunction = malfunctions[randomIndex];
-            currentSolutionNeeded = 0;
+
             ActivateIndicators();
         }
     }
@@ -79,6 +79,8 @@ public class NaphthaCracker : MonoBehaviour
     private void UpdateMalfunction()
     {
         currentSolutionNeeded++;
+
+        // If current solution doesn't exist, then we know the malfunction was succesfully completed
         if (currentSolutionNeeded >= currentMalfunction.solutions.Count)
         {
             Debug.Log("Malfunction completed!");
