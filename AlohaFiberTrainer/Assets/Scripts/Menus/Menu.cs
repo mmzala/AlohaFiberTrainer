@@ -6,15 +6,15 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
     /// <summary>
-    /// Starts the trainer game, changes to the next scene
+    /// Loads the scene based on the given buildIndex
     /// </summary>
-    public void PlayGame()
+    public void ChangeScene(int buildIndex)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(buildIndex);
     }
 
     /// <summary>
-    /// Shut down the running application
+    /// Shuts down the running application
     /// </summary>
     public void ExitGame()
     {

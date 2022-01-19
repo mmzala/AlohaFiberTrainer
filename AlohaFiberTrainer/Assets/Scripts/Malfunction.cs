@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewMalfunction", menuName = "Malfunction", order = 1)]
 public class Malfunction : ScriptableObject
 {
+    #region SolutionSettings
     [System.Serializable]
     public class Solution
     {
@@ -21,6 +22,11 @@ public class Malfunction : ScriptableObject
     [Header("Solutions")]
     public List<Solution> solutions;
 
+    [Min(5f)]
+    public float timeToSolve = 10f;
+    #endregion // SolutionSettings
+
+    #region IndicatorSettings
     [System.Serializable]
     public class Indicator
     {
@@ -31,4 +37,5 @@ public class Malfunction : ScriptableObject
 
     [Header("Indicators")]
     public List<Indicator> indicators;
+    #endregion // IndicatorSettings
 }

@@ -32,7 +32,7 @@ public class NaphthaCrackerPart : MonoBehaviour
     private void Awake()
     {
         // Init element states to middle state (all elements start at middle level)
-        elementStates = new LevelState[4];
+        elementStates = new LevelState[elements.Length];
         for (int i = 0; i < elementStates.Length; i++)
         {
             elementStates[i] = LevelState.Middle;
@@ -53,5 +53,15 @@ public class NaphthaCrackerPart : MonoBehaviour
         // Change state and color of the element
         elementStates[elementNum] = state;
         elements[elementNum].color = stateColors[(int)state];
+    }
+
+    public void ResetAllElements()
+    {
+        int defaultStateIndex = (int)LevelState.Middle;
+        for (int i = 0; i < elements.Length; i++)
+        {
+            elementStates[i] = LevelState.Middle;
+            elements[i].color = stateColors[defaultStateIndex];
+        }
     }
 }

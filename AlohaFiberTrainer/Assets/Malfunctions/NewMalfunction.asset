@@ -13,9 +13,19 @@ MonoBehaviour:
   m_Name: NewMalfunction
   m_EditorClassIdentifier: 
   solutions:
+  - controller: 1
+    state: 0
+    delay: 0
   - controller: 0
     state: 0
     delay: 0
+  - controller: 1
+    state: 1
+    delay: 0
+  - controller: 2
+    state: 1
+    delay: 0
+  timeToSolve: 10
   indicators:
   - part: 0
     type: 1
