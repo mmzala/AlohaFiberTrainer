@@ -12,20 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5254db1fd7f58442827dcbed2cc245b, type: 3}
   m_Name: NewMalfunction
   m_EditorClassIdentifier: 
+  description: jashjdfasfdjha,gdcgashdfjsavdhagfdasjdashgdasdasdh,savddsaghvdahgsvdcsamcdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
   solutions:
   - controller: 1
     state: 0
     delay: 0
   - controller: 0
     state: 0
-    delay: 0
+    delay: 5
   - controller: 1
     state: 1
     delay: 0
   - controller: 2
     state: 1
     delay: 0
-  timeToSolve: 10
+  timeToSolve: 15
   indicators:
   - part: 0
     type: 1

@@ -35,6 +35,7 @@ public class NaphthaCracker : MonoBehaviour
     public Button cooler;
     #endregion // NaphthaCrackerControllers
 
+    #region MalfunctionSettings
     [Header("Malfunction Settings")]
     [SerializeField]
     private List<Malfunction> malfunctions;
@@ -44,9 +45,17 @@ public class NaphthaCracker : MonoBehaviour
     private Vector2 malfunctionWaitingTime = new Vector2(5f, 5f);
 
     private float malfunctionTimer;
+    private float currentSolutionDelay;
     private Malfunction currentMalfunction = null;
     private int currentSolutionNeeded = 0;
     private Controllers usedController;
+    #endregion // MalfunctionSettings
+
+    [Header("Score settings")]
+    [SerializeField]
+    private ResultScreen resultScreen;
+
+    private int malfunctionsSolved = 0;
 
     private void Start()
     {
@@ -62,6 +71,11 @@ public class NaphthaCracker : MonoBehaviour
         }
 
         ActivateMalfunction();
+
+        if(currentSolutionDelay > 0f)
+        {
+            currentSolutionDelay -= Time.deltaTime;
+        }
     }
 
     #region MalfunctionLogic
@@ -84,7 +98,13 @@ public class NaphthaCracker : MonoBehaviour
         if (currentSolutionNeeded >= currentMalfunction.solutions.Count)
         {
             Debug.Log("Malfunction completed!");
+            malfunctionsSolved++;
             ResetMalfunction();
+        }
+        else
+        {
+            // If there is a next solution, then update the delay for the next solution
+            currentSolutionDelay = currentMalfunction.solutions[currentSolutionNeeded].delay;
         }
     }
 
@@ -127,12 +147,15 @@ public class NaphthaCracker : MonoBehaviour
         int iValue = (int)value;
         Malfunction.Solution currentSolution = currentMalfunction.solutions[currentSolutionNeeded];
         if(currentSolution.controller == usedController
-            && (int)currentSolution.state == iValue)
+            && (int)currentSolution.state == iValue
+            && currentSolutionDelay <= 0f)
         {
             UpdateMalfunction();
         }
         else
         {
+            // Show result screen when user got the wrong solution
+            resultScreen.ShowResult(currentMalfunction, malfunctionsSolved);
         }
     }
 
@@ -142,12 +165,15 @@ public class NaphthaCracker : MonoBehaviour
 
         Malfunction.Solution currentSolution = currentMalfunction.solutions[currentSolutionNeeded];
         if (currentSolution.controller == usedController
-            && currentSolution.state == LevelState.Middle)
+            && currentSolution.state == LevelState.Middle
+            && currentSolutionDelay <= 0f)
         {
             UpdateMalfunction();
         }
         else
         {
+            // Show result screen when user got the wrong solution
+            resultScreen.ShowResult(currentMalfunction, malfunctionsSolved);
         }
     }
     #endregion // SolutionChecking

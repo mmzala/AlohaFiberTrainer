@@ -5,6 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewMalfunction", menuName = "Malfunction", order = 1)]
 public class Malfunction : ScriptableObject
 {
+    [TextArea]
+    public string description;
+
     #region SolutionSettings
     [System.Serializable]
     public class Solution
@@ -15,7 +18,7 @@ public class Malfunction : ScriptableObject
         public LevelState state = LevelState.Middle;
 
         [Min(0f)]
-        [Tooltip("How long should the player wait before the next solution")]
+        [Tooltip("How long should the player wait before this solution")]
         public float delay = 0f;
     }
 
