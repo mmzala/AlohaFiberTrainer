@@ -53,11 +53,18 @@ public class NaphthaCracker : MonoBehaviour
     private Controllers usedController;
     #endregion // MalfunctionSettings
 
-    [Header("Score settings")]
+    [Header("Score Settings")]
     [SerializeField]
     private ResultScreen resultScreen;
 
     private int malfunctionsSolved = 0;
+
+    [Header("Sound Effects")]
+    [SerializeField]
+    private AudioSource correctSound;
+
+    [SerializeField]
+    private AudioSource wrongSound;
 
     private void Start()
     {
@@ -99,6 +106,7 @@ public class NaphthaCracker : MonoBehaviour
         {
             Debug.Log("Malfunction completed!");
             malfunctionsSolved++;
+            correctSound.Play();
             ResetMalfunction();
         }
         else
@@ -226,6 +234,7 @@ public class NaphthaCracker : MonoBehaviour
     private void ShowResultScreen()
     {
         resultScreen.ShowResult(currentMalfunction, malfunctionsSolved);
+        wrongSound.Play();
         this.enabled = false; // Make sure "Show Result method is called only once"
     }
 
