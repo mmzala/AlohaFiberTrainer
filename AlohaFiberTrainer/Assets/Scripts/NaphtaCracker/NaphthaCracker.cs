@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class NaphthaCracker : MonoBehaviour
 {
@@ -126,11 +127,13 @@ public class NaphthaCracker : MonoBehaviour
         currentMalfunction = null;
         currentSolutionNeeded = 0;
 
+        // Reset indicators
         foreach (NaphthaCrackerPart part in parts)
         {
             part.ResetAllElements();
         }
 
+        // Reset slider values
         pump.value = (int)LevelState.Middle;
         preheater.value = (int)LevelState.Middle;
 
@@ -153,17 +156,32 @@ public class NaphthaCracker : MonoBehaviour
         else
         {
             // Show result screen when user took too long to solve the malfunction
-            resultScreen.ShowResult(currentMalfunction, malfunctionsSolved);
-            this.enabled = false; // Make sure "Show Result method is called only once"
+            ShowResultScreen();
         }
+    }
+
+    /// <summary>
+    /// Makes the waiting time for the next malfunction smaller based on the given amount
+    /// </summary>
+    /// <param name="amount"> Amount of waiting time in seconds </param>
+    private void SpeedUpToNextMalfunction(float amount)
+    {
+        malfunctionTimer -= amount;
     }
     #endregion // MalfunctionLogic
 
     #region SolutionChecking
     public void SliderSolution(float value)
     {
-        if (!currentMalfunction) return;
+        // If the user uses a slider when there is no malfunction,
+        // punish him by giving him the next malfunction faster
+        if (!currentMalfunction)
+        {
+            SpeedUpToNextMalfunction(1f);
+            return;
+        }
 
+        // Check if the solution is right
         int iValue = (int)value;
         Malfunction.Solution currentSolution = currentMalfunction.solutions[currentSolutionNeeded];
         if(currentSolution.controller == usedController
@@ -175,14 +193,21 @@ public class NaphthaCracker : MonoBehaviour
         else
         {
             // Show result screen when user got the wrong solution
-            resultScreen.ShowResult(currentMalfunction, malfunctionsSolved);
+            ShowResultScreen();
         }
     }
 
     public void ButtonSolution()
     {
-        if (!currentMalfunction) return;
+        // If the user uses a button when there is no malfunction,
+        // punish him by giving him the next malfunction faster
+        if (!currentMalfunction)
+        {
+            SpeedUpToNextMalfunction(1f);
+            return;
+        }
 
+        // Check if the solution is right
         Malfunction.Solution currentSolution = currentMalfunction.solutions[currentSolutionNeeded];
         if (currentSolution.controller == usedController
             && currentSolution.state == LevelState.Middle
@@ -193,10 +218,16 @@ public class NaphthaCracker : MonoBehaviour
         else
         {
             // Show result screen when user got the wrong solution
-            resultScreen.ShowResult(currentMalfunction, malfunctionsSolved);
+            ShowResultScreen();
         }
     }
     #endregion // SolutionChecking
+
+    private void ShowResultScreen()
+    {
+        resultScreen.ShowResult(currentMalfunction, malfunctionsSolved);
+        this.enabled = false; // Make sure "Show Result method is called only once"
+    }
 
     #region Setters
     public void SetUsedController(int controllerIndex)

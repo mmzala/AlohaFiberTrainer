@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5254db1fd7f58442827dcbed2cc245b, type: 3}
+  m_Name: Aanvoervolume te laag
+  m_EditorClassIdentifier: 
+  description: 'Het aanvoervolume (de hoeveelheid) van de ethyleen is te laag. Hierdoor
+    raakt de inhoud van de naftakraker uit balans. Het residu dat opnieuw gebruikt
+    kan worden, is te weinig. De hoeveelheid ethyleengas die vrijkomt, wordt te weinig.
+    De oplossing is om de pomp op een hogere stand te zetten. '
+  solutions:
+  - controller: 0
+    state: 2
+    delay: 0
+  timeToSolve: 15
+  indicators:
+  - part: 0
+    type: 0
+    state: 0
+  - part: 1
+    type: 0
+    state: 0
+  - part: 2
+    type: 0
+    state: 0
+  - part: 3
+    type: 0
+    state: 0
+  - part: 4
+    type: 0
+    state: 0
+  - part: 5
+    type: 0
+    state: 0

@@ -302,8 +302,11 @@ MonoBehaviour:
   preheater: {fileID: 1341110660}
   cooler: {fileID: 1681903333}
   malfunctions:
-  - {fileID: 11400000, guid: d4b71db35a00f1d408dac012bef55ec6, type: 2}
-  malfunctionWaitingTime: {x: 5, y: 5}
+  - {fileID: 11400000, guid: 0f0439730a5526343b6fdf0ebafbe75e, type: 2}
+  - {fileID: 11400000, guid: 605eacbe29920cb49a16ff4a168b490f, type: 2}
+  - {fileID: 11400000, guid: 12df3a1c655a5f847bb2c2da092f32f3, type: 2}
+  - {fileID: 11400000, guid: e03e565fba482ac48860edf364a7059c, type: 2}
+  malfunctionWaitingTime: {x: 5, y: 15}
   resultScreen: {fileID: 1689345596}
 --- !u!1 &57811557
 GameObject:
@@ -5015,8 +5018,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 104, y: -135}
-  m_SizeDelta: {x: 400, y: 50}
+  m_AnchoredPosition: {x: 304, y: -135}
+  m_SizeDelta: {x: 800, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1424066789
 MonoBehaviour:
@@ -6647,7 +6650,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 52, y: -110}
-  m_SizeDelta: {x: 800, y: 400}
+  m_SizeDelta: {x: 800, y: 500}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1898017959
 MonoBehaviour:
@@ -6686,8 +6689,9 @@ MonoBehaviour:
     om de naftakraker te beinvloeden, namelijk 2 sliders en een knop waarop staat
     \"Repareer koeler\". \n\nDe knop doet wat die zegt, hij repareert de koeler.
     Met de 2 sliders die je ziet kan je de stand veranderen van de pomp en de voorverhitter.
-    Ze hebben allebei 3 standen, een lage, middel en hoge stand.\n\nWanneer je een
-    storing ziet gebruik de goede controles om de storing op te lossen!"
+    Ze hebben allebij 3 standen, een lage, middel en hoge stand.\n\nWanneer je een
+    storing ziet gebruik de goede controles om de storing op te lossen. Wacht ook
+    niet te lang, want als je een storing niet snel genoeg oplost, dan faal je ook!"
 --- !u!222 &1898017960
 CanvasRenderer:
   m_ObjectHideFlags: 0

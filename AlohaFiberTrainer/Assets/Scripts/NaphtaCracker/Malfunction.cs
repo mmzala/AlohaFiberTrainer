@@ -26,6 +26,7 @@ public class Malfunction : ScriptableObject
     public List<Solution> solutions;
 
     [Min(5f)]
+    [Tooltip("Maximum time to solve the malfunction in seconds")]
     public float timeToSolve = 10f;
     #endregion // SolutionSettings
 
