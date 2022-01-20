@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewMalfunction", menuName = "Malfunction", order = 1)]
 public class Malfunction : ScriptableObject
 {
-    [TextArea]
+    [TextArea(10, 15)]
     public string description;
 
     #region SolutionSettings
