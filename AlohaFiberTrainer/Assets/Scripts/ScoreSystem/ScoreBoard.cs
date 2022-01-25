@@ -35,7 +35,6 @@ public class Scoreboard : MonoBehaviour
             compareElements.Remove(element);
         }
 
-        Debug.Log(compareElements.Count);
         if(compareElements.Count >= 2)
         {
             SetComparisonElementsActive(false);
