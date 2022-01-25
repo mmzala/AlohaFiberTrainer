@@ -22,11 +22,22 @@ public class ScoreboardElement : MonoBehaviour
     [SerializeField]
     private string timeMeasurement = " seconds";
 
-    public void SetupElement(PlayerScore playerScore)
+    // Scoreboard
+    private Scoreboard scoreboard;
+
+    public void SetupElement(Scoreboard scoreboard, PlayerScore playerScore)
     {
+        this.scoreboard = scoreboard;
+
+        // Setting up text elements
         playerName.text = playerScore.playerName;
         malfunctionSolvedText.text = playerScore.malfunctionsSolved.ToString();
         reasonScoreText.text = playerScore.malfunctionReasonScore.ToString();
         recognitionScoreText.text = playerScore.malfunctionRecognitionTime.ToString("0.000") + timeMeasurement;
+    }
+
+    public void CompareElement(bool value)
+    {
+        scoreboard.CompareScores(this, value);
     }
 }
