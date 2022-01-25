@@ -15,13 +15,6 @@ public class Scoreboard : MonoBehaviour
 
     private void Start()
     {
-        PlayerScore p1 = ScriptableObject.CreateInstance<PlayerScore>();
-        p1.playerName = "Marcin";
-        PlayerScore p2 = ScriptableObject.CreateInstance<PlayerScore>();
-        p2.malfunctionsSolved = 10;
-        ScoreFileManager.SaveFile(p1);
-        ScoreFileManager.SaveFile(p2);
-
         scores = ScoreFileManager.LoadFiles();
         FillList();
     }
@@ -35,7 +28,7 @@ public class Scoreboard : MonoBehaviour
             ScoreboardElement scoreboardElement = scoreElement.GetComponent<ScoreboardElement>();
             scoreboardElement.SetupElement(playerScore);
 
-            // World position stays is false to fit the object into the list
+            // worldPositionStays is false to fit the object into the list
             scoreElement.transform.SetParent(listContent.transform, false);
         }
     }

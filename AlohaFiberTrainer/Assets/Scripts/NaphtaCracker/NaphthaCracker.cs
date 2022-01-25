@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
+using System;
 
 public class NaphthaCracker : MonoBehaviour
 {
@@ -57,7 +57,7 @@ public class NaphthaCracker : MonoBehaviour
     [SerializeField]
     private ResultScreen resultScreen;
 
-    private int malfunctionsSolved = 0;
+    private PlayerScore playerScore;
 
     [Header("Sound Effects")]
     [SerializeField]
@@ -68,6 +68,7 @@ public class NaphthaCracker : MonoBehaviour
 
     private void Start()
     {
+        playerScore = ScriptableObject.CreateInstance<PlayerScore>();
         SetMalfunctionTimer();
     }
 
@@ -89,7 +90,7 @@ public class NaphthaCracker : MonoBehaviour
     {
         if(currentMalfunction == null)
         {
-            int randomIndex = Random.Range(0, malfunctions.Count);
+            int randomIndex = UnityEngine.Random.Range(0, malfunctions.Count);
             currentMalfunction = malfunctions[randomIndex];
             malfunctionCompleteTimer = currentMalfunction.timeToSolve;
 
@@ -99,13 +100,19 @@ public class NaphthaCracker : MonoBehaviour
 
     private void UpdateMalfunction()
     {
+        // Add recognition time to score, so how fast the player reacted to the current situation
+        if(currentSolutionNeeded == 0)
+        {
+            playerScore.malfunctionRecognitionTime += currentMalfunction.timeToSolve - malfunctionCompleteTimer;
+        }
+
         currentSolutionNeeded++;
 
         // If current solution doesn't exist, then we know the malfunction was succesfully completed
         if (currentSolutionNeeded >= currentMalfunction.solutions.Count)
         {
             Debug.Log("Malfunction completed!");
-            malfunctionsSolved++;
+            playerScore.malfunctionsSolved++;
             correctSound.Play();
             ResetMalfunction();
         }
@@ -233,7 +240,7 @@ public class NaphthaCracker : MonoBehaviour
 
     private void ShowResultScreen()
     {
-        resultScreen.ShowResult(currentMalfunction, malfunctionsSolved);
+        resultScreen.ShowResult(currentMalfunction, playerScore);
         wrongSound.Play();
         this.enabled = false; // Make sure "Show Result method is called only once"
     }
@@ -246,7 +253,7 @@ public class NaphthaCracker : MonoBehaviour
 
     private void SetMalfunctionTimer()
     {
-        malfunctionTimer = Random.Range(malfunctionWaitingTime.x, malfunctionWaitingTime.y);
+        malfunctionTimer = UnityEngine.Random.Range(malfunctionWaitingTime.x, malfunctionWaitingTime.y);
     }
     #endregion // Setters
 }

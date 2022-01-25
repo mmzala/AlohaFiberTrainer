@@ -18,11 +18,15 @@ public class ScoreboardElement : MonoBehaviour
     [SerializeField]
     private Text recognitionScoreText;
 
+    [Header("Default Texts")]
+    [SerializeField]
+    private string timeMeasurement = " seconds";
+
     public void SetupElement(PlayerScore playerScore)
     {
         playerName.text = playerScore.playerName;
         malfunctionSolvedText.text = playerScore.malfunctionsSolved.ToString();
         reasonScoreText.text = playerScore.malfunctionReasonScore.ToString();
-        recognitionScoreText.text = playerScore.malfunctionRecognitionTime.ToString();
+        recognitionScoreText.text = playerScore.malfunctionRecognitionTime.ToString("0.000") + timeMeasurement;
     }
 }

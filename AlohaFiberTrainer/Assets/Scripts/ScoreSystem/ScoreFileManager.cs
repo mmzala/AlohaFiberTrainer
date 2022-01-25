@@ -13,7 +13,7 @@ public static class ScoreFileManager
         List<PlayerScore> scores = new List<PlayerScore>();
 
         // Get all score files
-        string path = "C:/GitHub/AlohaFiberTrainer/AlohaFiberTrainer/Assets/Scores";
+        string path = Application.persistentDataPath + "/";
         string[] files = Directory.GetFiles(path, "*" + fileExtension);
 
         foreach (string file in files)
@@ -35,7 +35,7 @@ public static class ScoreFileManager
     public static void SaveFile(PlayerScore playerScore)
     {
         // Create file
-        string path = "C:/GitHub/AlohaFiberTrainer/AlohaFiberTrainer/Assets/Scores/" + playerScore.playerName + DateTime.Now.ToString("_MMddyyyy_HHmmss") + fileExtension;
+        string path = Application.persistentDataPath + "/" + playerScore.playerName + DateTime.Now.ToString("_MMddyyyy_HHmmss") + fileExtension;
         FileStream file = File.Create(path);
         file.Dispose(); // Dispose file, otherwise there will be a path violation error
 
