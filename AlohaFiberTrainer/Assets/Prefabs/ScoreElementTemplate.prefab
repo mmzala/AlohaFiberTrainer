@@ -255,7 +255,7 @@ MonoBehaviour:
   malfunctionSolvedText: {fileID: 5552669972596210201}
   reasonScoreText: {fileID: 7857861015582633005}
   recognitionScoreText: {fileID: 7273360764153236586}
-  timeMeasurement: ' seconds'
+  timeMeasurement: ' seconden'
 --- !u!1 &2501251758831840120
 GameObject:
   m_ObjectHideFlags: 0

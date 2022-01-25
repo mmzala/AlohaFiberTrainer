@@ -1354,7 +1354,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Ethyeen productie uitleg
+  m_Text: Ethyleen productie uitleg
 --- !u!222 &389386793
 CanvasRenderer:
   m_ObjectHideFlags: 0
