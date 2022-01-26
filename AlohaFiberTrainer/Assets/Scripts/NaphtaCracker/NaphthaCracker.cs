@@ -240,6 +240,7 @@ public class NaphthaCracker : MonoBehaviour
 
     private void ShowResultScreen()
     {
+        playerScore.malfunctionReasonScore = playerScore.malfunctionsSolved;
         resultScreen.ShowResult(currentMalfunction, playerScore);
         wrongSound.Play();
         this.enabled = false; // Make sure "Show Result method is called only once"
