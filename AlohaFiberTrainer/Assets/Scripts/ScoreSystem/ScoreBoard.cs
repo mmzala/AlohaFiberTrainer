@@ -35,6 +35,7 @@ public class Scoreboard : MonoBehaviour
             compareElements.Remove(element);
         }
 
+        // Show elements when 2 of them are selected
         if(compareElements.Count >= 2)
         {
             SetComparisonElementsActive(false);
