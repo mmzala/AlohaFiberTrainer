@@ -3748,7 +3748,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &925036138
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5581,7 +5581,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
+  m_AnchoredPosition: {x: 50, y: -30}
   m_SizeDelta: {x: 800, y: 75}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1390644267
@@ -7578,8 +7578,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 52, y: -110}
-  m_SizeDelta: {x: 800, y: 500}
+  m_AnchoredPosition: {x: 52, y: -100}
+  m_SizeDelta: {x: 800, y: 550}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1898017959
 MonoBehaviour:
@@ -7618,9 +7618,11 @@ MonoBehaviour:
     om de naftakraker te beinvloeden, namelijk 2 sliders en een knop waarop staat
     \"Repareer koeler\". \n\nDe knop doet wat die zegt, hij repareert de koeler.
     Met de 2 sliders die je ziet kan je de stand veranderen van de pomp en de voorverhitter.
-    Ze hebben allebij 3 standen, een lage, middel en hoge stand.\n\nWanneer je een
-    storing ziet gebruik de goede controles om de storing op te lossen. Wacht ook
-    niet te lang, want als je een storing niet snel genoeg oplost, dan faal je ook!"
+    Ze hebben allebij 3 standen, een lage, middel en hoge stand.\n\nVergeet niet
+    de sliders terug te zetten naar de middel stand wanneer alles op groen staat!\n\nWanneer
+    je een storing ziet gebruik de goede controles om de storing op te lossen. Wacht
+    ook niet te lang, want als je een storing niet snel genoeg oplost, dan faal je
+    ook!"
 --- !u!222 &1898017960
 CanvasRenderer:
   m_ObjectHideFlags: 0
